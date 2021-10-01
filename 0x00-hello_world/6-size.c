@@ -14,10 +14,10 @@ int main(void)
 	float fT;
 
 	/*Sizeof of typs */
-	printf("Size of char: %lu byte(s)\n", (unsigned long)sizeof(cT));
-	printf("Size of int: %lu byte(s)\n", (unsigned long)sizeof(iT));
-	printf("Size of long int: %lu byte(s)\n", (unsigned long)sizeof(liT));
-	printf("Size of long long int: %lu byte(s)\n", (unsigned long)sizeof(lliT));
-	printf("Size of float: %lu byte(s)\n", (unsigned long)sizeof(fT));
+	printf("Size of a char: %lu byte(s)\n", (unsigned long)sizeof(cT));
+	printf("Size of an int: %lu byte(s)\n", (unsigned long)sizeof(iT));
+	printf("Size of a long int: %lu byte(s)\n", (unsigned long)sizeof(liT));
+	printf("Size of a long long int: %lu byte(s)\n", (unsigned long)sizeof(lliT));
+	printf("Size of a float: %lu byte(s)\n", (unsigned long)sizeof(fT));
 	return (0);
 }
