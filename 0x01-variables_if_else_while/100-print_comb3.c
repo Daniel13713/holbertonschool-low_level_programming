@@ -14,10 +14,10 @@ int main(void)
 	{
 		for (i = n + 1; i <= 57; i++)
 		{
-			if (i != n)
+			putchar(n);
+			putchar(i);
+			if (i != 57 || n != 56)
 			{
-				putchar(n);
-				putchar(i);
 				putchar(44);
 				putchar(32);
 			}
