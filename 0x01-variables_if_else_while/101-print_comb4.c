@@ -1,34 +1,33 @@
 #include <stdio.h>
 
 /**
- * main - Function tha print to alphabet
+ * main - function that print combination of numbers
  *
- * Return: Always (0) sucess
+ * Return: Always (0) success
  */
 int main(void)
 {
-        int n;
-        int i;
-	int j;
+	int a;
+	int b;
+	int c;
 
-        for (n = 48; n <= 56; n++)
-        {
-                for (i = n + 1; i <= 57; i++)
-                {
-                        for (j = i + 1; j <= 57; j++)
+	for (a = 48; a <= 55; a++)
+	{
+		for (b = a + 1; b <= 56; b++)
+		{
+			for (c = b + 1; b <= 57; c++)
 			{
-				putchar(n);
-                        	putchar(i);
-				putchar(j);
-			
-                        	if (n != 55 || i != 56 || j != 57 )
-                        	{
-                                	putchar(44);
-                                	putchar(32);
-                        	}
+				putchar(a);
+				putchar(b);
+				putchar(c);
+				if (a != 55 || b != 56 || c != 57)
+				{
+					putchar(44);
+					putchar(32);
+				}
 			}
-                }
-        }
-        putchar(10);
-        return (0);
+		}
+	}
+	putchar(10);
+	return (0);
 }
