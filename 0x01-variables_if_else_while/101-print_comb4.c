@@ -11,9 +11,9 @@ int main(void)
 	int b;
 	int c;
 
-	for (a = 48; a <= 55; a++)
+	for (a = 48; a <= 56; a++)
 	{
-		for (b = a + 1; b <= 56; b++)
+		for (b = a + 1; b <= 57; b++)
 		{
 			for (c = b + 1; b <= 57; c++)
 			{
