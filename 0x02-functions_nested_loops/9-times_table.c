@@ -19,16 +19,24 @@ void times_table(void)
 			{
 				_putchar(k / 10 + '0');
 				_putchar(k % 10 + '0');
+				if (j != 9)
+                                {
+					_putchar(44);
+                                        _putchar(32);
+                                }
 			}
 			else
 			{
+				if (j != 0)
+				{	
+					_putchar(32);
+				}
 				_putchar(k % 10 + '0');
-				_putchar(32);
-			}
-			if (j != 9)
-			{
-				_putchar(44);
-				_putchar(32);
+				if (j != 9)
+				{
+					_putchar(44);
+					_putchar(32);
+				}
 			}
 			j++;
 		}
