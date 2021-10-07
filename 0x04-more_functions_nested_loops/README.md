@@ -22,3 +22,8 @@ Write a function that prints 10 times the numbers, from 0 to 14, followed by a n
 
 6. The shortest distance between two points is a straight line
 Write a function that draws a straight line in the terminal.
+
+7. I feel like I am diagonally parked in a parallel universe
+Write a function that draws a diagonal line on the terminal.
+
+
