@@ -8,9 +8,10 @@
 
 int main(void)
 {
-	int i;
+	int i, limit;
 
-	for (i = 1; i <= 100; i++)
+	limit = 100;
+	for (i = 1; i <= limit; i++)
 	{
 		if (i % 3 == 0 && i % 5 != 0)
 		{
@@ -18,6 +19,7 @@ int main(void)
 		}
 		else if (i % 5 == 0 && i % 3 != 0)
 		{
+			if (i == limit - 1)
 			printf("Buzz ");
 		}
 		else if (i % 3 == 0 && i % 5 == 0)
