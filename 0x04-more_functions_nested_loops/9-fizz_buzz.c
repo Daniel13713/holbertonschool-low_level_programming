@@ -19,7 +19,7 @@ int main(void)
 		}
 		else if (i % 5 == 0 && i % 3 != 0)
 		{
-			if (i == limit - 1)
+			if (i == limit)
 			{
 				printf("Buzz");
 			}
