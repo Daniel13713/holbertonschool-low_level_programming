@@ -20,7 +20,13 @@ int main(void)
 		else if (i % 5 == 0 && i % 3 != 0)
 		{
 			if (i == limit - 1)
-			printf("Buzz ");
+			{
+				printf("Buzz");
+			}
+			else
+			{
+				printf("Buzz ");
+			}
 		}
 		else if (i % 3 == 0 && i % 5 == 0)
 		{
