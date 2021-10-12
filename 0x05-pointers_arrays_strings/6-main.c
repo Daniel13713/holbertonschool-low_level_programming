@@ -9,7 +9,7 @@ int main(void)
 {
     char *str;
 
-    str = "laborum.\0Holberton";
+    str = "lorem10ajsaksdbjasndkasnkasd asfhasbfkjashflasnklf asfjasbfkasnlasnfl laborum.\0Holberton";
     puts2(str);
     return (0);
 }
