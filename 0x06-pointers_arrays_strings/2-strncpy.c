@@ -30,13 +30,13 @@ int _strlen(char *s)
 
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i, j;
+	int i;
 
 	for (i = 0; i < n && src[i] != '\0'; i++)
 	{
 		dest[i] = src[i];
 	}
-	for (j = i; j < n; j++)
+	for (; i < n; i++)
 	{
 		dest[i] = '\0';
 	}
