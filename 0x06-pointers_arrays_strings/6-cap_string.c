@@ -13,6 +13,11 @@ char *cap_string(char *str)
 	int array[13] = {10, 32, 9, 44, 59, 46, 63,
 		33, 34, 40, 41, 123, 125};
 	i = 0;
+
+	if (str[0] >= 'a' && str[0] <= 'z')
+	{
+		str[0] = str[0] - 32;
+	}
 	while (str[i] != '\0')
 	{
 		for (j = 0; j < 13; j++)
