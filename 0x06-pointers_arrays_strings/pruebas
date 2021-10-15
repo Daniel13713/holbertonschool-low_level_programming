@@ -1,0 +1,20 @@
+./1-main.c
+
+gf = moverse a un archivo desde la ruta escrita
+ctrl + o = volver hacia trás
+ctrl + i = volver hacia adelante
+gg = ir al inicio del archivo 
+G = ir al final del archivo 
+/palabra = buscar hacia adelante
+?palabra = buscar haci/a atrás (n para moverse entre las busquedas)
+% = moverse al paréntesis(corchete...) que encierra un a linea de código
+:s/oldword/newword = cambia la primer palabra que se encuentre
+:s/oldword/newword/g = cambia todas las palabras en esa línea
+:%s/oldword/newword/gc = cambia todas las palabras en todo el archivo (con la c nos pregunta si queremos cambiar una por una)
+R = reemplazar hlolololololololo
+
+##Modo visual (v) (seleccionar)
+y = copiar 
+p = pegar
+
+
