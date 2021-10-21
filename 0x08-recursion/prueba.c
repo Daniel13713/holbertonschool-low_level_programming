@@ -1,16 +1,42 @@
 #include <stdio.h>
 
+/**
+ * _strlen_recursion - calculate the length of a string
+ *
+ * @s: string
+ * Return: Length of the string s
+ */
 
-char save(char *s)
+int _strlen_recursion(char *s)
 {
-	char *p;
+	int i = 0;
 
-	p = s;
 	if (*s)
 	{
-		return (save(s));
+		i++;
+		return (i + _strlen_recursion(s + 1));
 	}
-	return (*p);
+	return (i);
+}
+
+int save(char *s, int n)
+{
+	/*printf ("s[0] = %c\n", s[0]);
+	printf ("s[n - 1] = %c\n", s[n - 1]);
+	printf("n = %d\n", n);*/
+	if (*s == s[n - 1] && n > 1) 
+	{
+		return (save(s + 1, n - 2));
+	}
+	else if (n <= 1)
+	{
+		return (1);
+	}
+	else 
+	{
+		return (0);
+	}
+	return (1);
 }
 
 /**
@@ -20,24 +46,32 @@ char save(char *s)
  * Return: Nothing
  */
 
-char *_print_rev_recursion(char *s)
+int is_palindrome(char *s)
 {
-	if (*s > '\0')
-	{
-		return(_print_rev_recursion(s + 1));
-
-	}
+	int n; 
+	
 	if (*s == '\0')
 	{
-		return (s);
+		return (1);
 	}
-	return (s);
+	n = _strlen_recursion(s);
+	return(save(s,n));
 }
 
 int main(void)
 {
-	char *a;
-	a = _print_rev_recursion("\nColton Walker");
-	printf("%s", a);
-	return (0);
+	int r;
+
+	r = is_palindrome("level");
+	printf("%d\n", r);
+	r = is_palindrome("redder");
+	printf("%d\n", r);
+	r = is_palindrome("test");
+	printf("%d\n", r);
+    	r = is_palindrome("step on no pets");
+    	printf("%d\n", r);
+	r = is_palindrome("");
+    	printf("%d\n", r);
+
+    	return (0);
 }
