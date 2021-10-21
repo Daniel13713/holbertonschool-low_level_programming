@@ -19,6 +19,14 @@ int recx(int n, int i)
 	{
 		return (1);
 	}
+	else if (n == 1 || n == 0)
+	{
+		return (0);
+	}
+	else if (n < -1)
+	{
+		return (0);
+	}
 	return (recx(n, i + 1));
 }
 
@@ -32,17 +40,12 @@ int recx(int n, int i)
 
 int is_prime_number(int n)
 {
-	if (n == 1 || n == 0 || n == -1)
-	{
-		return (0);
-	}
-	else if (n > 1)
+	if (n > 1)
 	{
 		return (recx(n, 2));
 	}
-	if (n < -1)
-	{
-		return (0);
-	}
+
+
+
 	return (0);
 }
