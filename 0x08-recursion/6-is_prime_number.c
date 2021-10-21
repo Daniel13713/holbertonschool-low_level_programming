@@ -40,6 +40,9 @@ int is_prime_number(int n)
 	{
 		return (recx(n, 2));
 	}
-	return (6);
-
+	if (n < -1)
+	{
+		return (0);
+	}
+	return (0);
 }
