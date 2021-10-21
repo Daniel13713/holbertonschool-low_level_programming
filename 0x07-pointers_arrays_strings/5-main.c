@@ -9,7 +9,7 @@
 int main(void)
 {
     char *s = "hello, world";
-    char *f = "ll";
+    char *f = "w";
     char *t;
 
     t = _strstr(s, f);
