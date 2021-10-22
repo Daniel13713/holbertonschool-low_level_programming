@@ -1,40 +1,5 @@
 #include "main.h"
-
-/**
- * toInt - convert a string in an intenger
- *
- * @s: string
- * Return: Integer
- */
-
-int toInt(char s[])
-{
-	int i, sing, set, n;
-
-	if (s[0] == '-')
-	{
-		sing = -1;
-	}
-	if (sing == -1)
-	{
-		set = 1;
-	}
-	else
-	{
-		set = 0;
-	}
-	n = 0;
-	for (i = set; s[i] != '\0'; i++)
-	{
-		n = n * 10 + s[i] - '0';
-	}
-	if (sing == -1)
-	{
-		n = -n;
-	}
-	return (n);
-}
-
+#include <stdlib.h>
 /**
  * main - prints the multiplication of two integers
  *
@@ -48,9 +13,9 @@ int main(int argc, char *argv[])
 
 	if (argc == 3)
 	{
-		printf("%d\n", toInt(argv[1]) * toInt(argv[2]));
+		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
 		return (0);
 	}
-	printf("Error");
+	printf("Error\n");
 	return (1);
 }
