@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <ctype.h>
 /**
  * main - prints the sum of two integers
  *
@@ -10,17 +11,26 @@
 
 int main(int argc, char *argv[])
 {
+	int i, j, sum;
 
-	if (argc == 3)
+	sum = 0;
+
+
+	for (i = 1; i < argc; i++)
 	{
-		printf("%d\n", atoi(argv[1]) + atoi(argv[2]));
-		return (0);
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			if (isdigit(argv[i][j]) == 0)
+			{
+				printf("Error\n");
+				return (1);
+			}
+			j++;
+		}
+		sum += atoi(argv[i]);
 	}
-	else if (argc == 1)
-	{
-		printf("%d\n", 0);
-		return (0);
-	}
-	printf("Error\n");
-	return (1);
+	printf("%d\n", sum);
+	return (0);
+
 }
