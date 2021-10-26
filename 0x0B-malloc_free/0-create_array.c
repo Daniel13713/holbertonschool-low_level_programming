@@ -18,14 +18,14 @@ char *create_array(unsigned int size, char c)
 		return (0);
 	}
 	buffer = malloc(size * sizeof(char));
+	if (buffer == NULL)
+	{
+		return (0);
+	}
 	while (i < size)
 	{
 		*(buffer + i) = c;
 		i++;
-	}
-	if (buffer == NULL)
-	{
-		return (0);
 	}
 	return (buffer);
 }
