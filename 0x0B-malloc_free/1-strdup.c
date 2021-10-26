@@ -37,7 +37,7 @@ char *_strdup(char *str)
 	}
 
 	size_str = _strlen_recursion(str);
-	copy = malloc(size_str * sizeof(str));
+	copy = malloc(size_str - 1 * sizeof(str));
 
 	if (copy == NULL)
 	{
