@@ -23,5 +23,9 @@ char *create_array(unsigned int size, char c)
 		*(buffer + i) = c;
 		i++;
 	}
+	if (buffer == NULL)
+	{
+		return (0);
+	}
 	return (buffer);
 }
