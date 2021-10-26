@@ -11,6 +11,11 @@ int _strlen_recursion(char *s)
 {
 	int i = 0;
 
+	if (s == NULL)
+	{
+		return (0);
+	}
+
 	if (*s)
 	{
 		i++;
@@ -32,29 +37,34 @@ char *str_concat(char *s1, char *s2)
 	int size_1, size_2, i;
 	char *str;
 
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL && s2 == NULL)
 	{
 		return (0);
 	}
 	size_1 = _strlen_recursion(s1);
 	size_2 = _strlen_recursion(s2);
-
 	str = malloc((size_1 + size_2 + 1) * sizeof(char));
 	if (str == NULL)
 	{
 		return (0);
 	}
 	i = 0;
-	while (s1[i] != '\0')
+	if (s1 != NULL)
 	{
-		str[i] = s1[i];
-		i++;
+		while (s1[i] != '\0')
+		{
+			str[i] = s1[i];
+			i++;
+		}
 	}
 	i = 0;
-	while (s2[i] != '\0')
+	if (s2 != NULL)
 	{
-		str[i + size_1] = s2[i];
-		i++;
+		while (s2[i] != '\0')
+		{
+			str[i + size_1] = s2[i];
+			i++;
+		}
 	}
 	return (str);
 }
