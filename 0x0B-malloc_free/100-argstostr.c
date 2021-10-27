@@ -87,7 +87,7 @@ char *argstostr(int ac, char **av)
 	{
 		sumlen += _strlen_recursion(av[i]);
 	}
-	str = malloc((sumlen) * sizeof(char));
+	str = malloc((sumlen - ac) * sizeof(char));
 
 	for (i = 0; i < ac; i++)
 	{
