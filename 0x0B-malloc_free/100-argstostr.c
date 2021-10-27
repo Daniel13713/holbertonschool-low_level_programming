@@ -39,7 +39,7 @@ char *str_concat(char *s1, char *s2)
 
 	size_1 = _strlen_recursion(s1);
 	size_2 = _strlen_recursion(s2);
-	str = malloc((size_1 + size_2 + 1) * sizeof(char));
+	str = malloc((size_1 + size_2) * sizeof(char));
 	if (str == NULL)
 	{
 		return (0);
@@ -88,7 +88,11 @@ char *argstostr(int ac, char **av)
 		sumlen += _strlen_recursion(av[i]);
 	}
 	str = malloc((sumlen - ac) * sizeof(char));
-
+	if (str == NULL)
+	{
+		free(str);
+		return (NULL);
+	}
 	for (i = 0; i < ac; i++)
 	{
 		str = str_concat(str, av[i]);
