@@ -45,7 +45,7 @@ int count(int n, int coins[], int nu, int i)
 int main(int argc, char *argv[])
 {
 	int coins[5] = {25, 10, 5, 2, 1};
-	int *num = NULL;
+	int num;
 
 	if (argc == 2)
 	{
@@ -59,19 +59,13 @@ int main(int argc, char *argv[])
 			printf("%d\n", 0);
 			return (0);
 		}
-		num = malloc(atoi(argv[1]) * sizeof(int));
-		if (num == NULL)
-		{
-			printf("null");
-		}
-		free(num);
-		*num = count(atoi(argv[1]), coins, 0, 0);
+		num = count(atoi(argv[1]), coins, 0, 0);
 	}
 	else
 	{
 		printf("Error\n");
 		return (1);
 	}
-	printf("%d\n", *num);
+	printf("%d\n", num);
 	return (0);
 }
