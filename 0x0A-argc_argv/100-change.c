@@ -16,17 +16,31 @@
 
 int count(int n, int coins[], int nu, int i)
 {
-	if (n >= coins[i])
+	if (n >= 4000000)
 	{
-		return (count(n - coins[i], coins, nu + 1, i));
+		if (n % coins[i] == 0)
+		{
+			return (nu + (n / coins[i]));
+		}
+		else if (n % coins[i] != 0)
+		{
+			return (count(n - 1, coins, nu + 1, i));
+		}
 	}
-	else if (n < coins[i] && n != 0)
+	else
 	{
-		return (count(n, coins, nu, i + 1));
-	}
-	else if (n <= 0)
-	{
-		return (nu);
+		if (n >= coins[i])
+		{
+			return (count(n - coins[i], coins, nu + 1, i));
+		}
+		else if (n < coins[i] && n != 0)
+		{
+			return (count(n, coins, nu, i + 1));
+		}
+		else if (n <= 0)
+		{
+			return (nu);
+		}
 	}
 	return (0);
 
@@ -50,11 +64,6 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		if (atoi(argv[1]) <= 0)
-		{
-			printf("%d\n", 0);
-			return (0);
-		}
-		if (atoi(argv[1]) >= 4000000)
 		{
 			printf("%d\n", 0);
 			return (0);
