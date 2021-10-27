@@ -16,7 +16,7 @@
 
 int count(int n, int coins[], int nu, int i)
 {
-	if (n >= 4000000)
+	if (n >= 100)
 	{
 		if (n % coins[i] == 0)
 		{
@@ -24,7 +24,8 @@ int count(int n, int coins[], int nu, int i)
 		}
 		else if (n % coins[i] != 0)
 		{
-			return (count(n - 1, coins, nu + 1, i));
+			return (count(n % coins[i], coins, nu +
+						((n - (n % coins[i])) / coins[i]), i + 1));
 		}
 	}
 	else
