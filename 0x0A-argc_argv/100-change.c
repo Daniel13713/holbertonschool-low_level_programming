@@ -16,14 +16,17 @@
 
 int count(int n, int coins[], int nu, int i)
 {
-	if (n % coins[i] == 0)
+	int res;
+
+	res = n % coins[i];
+	if (res == 0)
 	{
 		return (nu + (n / coins[i]));
 	}
-	else if (n % coins[i] != 0)
+	else if (res != 0)
 	{
-		return (count(n % coins[i], coins, nu +
-					((n - (n % coins[i])) / coins[i]), i + 1));
+		return (count(res, coins, nu +
+					((n - res) / coins[i]), i + 1));
 	}
 	else if (n <= 0)
 	{
