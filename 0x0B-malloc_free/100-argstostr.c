@@ -39,7 +39,7 @@ char *str_concat(char *s1, char *s2)
 
 	size_1 = _strlen_recursion(s1);
 	size_2 = _strlen_recursion(s2);
-	str = malloc((size_1 + size_2) * sizeof(char));
+	str = malloc((size_1 + size_2 + 1) * sizeof(char));
 	if (str == NULL)
 	{
 		return (0);
