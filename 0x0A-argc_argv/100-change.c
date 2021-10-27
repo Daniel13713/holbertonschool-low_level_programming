@@ -14,7 +14,6 @@
 
 int count(int n, int coins[], int nu, int i)
 {
-	printf("n = %d\n", n);
 	if (n >= coins[i])
 	{
 		return (count(n - coins[i], coins, nu + 1, i));
@@ -27,7 +26,6 @@ int count(int n, int coins[], int nu, int i)
 	{
 		return (nu);
 	}
-	printf("nu = %d\n", nu);
 	return (0);
 
 
@@ -61,6 +59,6 @@ int main(int argc, char *argv[])
 		printf("Error");
 		return (1);
 	}
-	printf("num = %d\n", num);
+	printf("%d\n", num);
 	return (0);
 }
