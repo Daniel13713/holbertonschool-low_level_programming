@@ -1,6 +1,8 @@
 #include "main.h"
 #include <ctype.h>
 #include <stdlib.h>
+#include <limits.h>
+
 
 /**
  * count - count how many coins are necesary
@@ -43,7 +45,7 @@ int count(int n, int coins[], int nu, int i)
 int main(int argc, char *argv[])
 {
 	int coins[5] = {25, 10, 5, 2, 1};
-	int num = 0;
+	int *num = NULL;
 
 	if (argc == 2)
 	{
@@ -52,13 +54,24 @@ int main(int argc, char *argv[])
 			printf("%d\n", 0);
 			return (0);
 		}
-		num = count(atoi(argv[1]), coins, 0, 0);
+		if (atoi(argv[1]) >= 4000000)
+		{
+			printf("%d\n", 0);
+			return (0);
+		}
+		num = malloc(atoi(argv[1]) * sizeof(int));
+		if (num == NULL)
+		{
+			printf("null");
+		}
+		free(num);
+		*num = count(atoi(argv[1]), coins, 0, 0);
 	}
 	else
 	{
 		printf("Error\n");
 		return (1);
 	}
-	printf("%d\n", num);
+	printf("%d\n", *num);
 	return (0);
 }
