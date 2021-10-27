@@ -16,36 +16,20 @@
 
 int count(int n, int coins[], int nu, int i)
 {
-	if (n >= 100)
+	if (n % coins[i] == 0)
 	{
-		if (n % coins[i] == 0)
-		{
-			return (nu + (n / coins[i]));
-		}
-		else if (n % coins[i] != 0)
-		{
-			return (count(n % coins[i], coins, nu +
-						((n - (n % coins[i])) / coins[i]), i + 1));
-		}
+		return (nu + (n / coins[i]));
 	}
-	else
+	else if (n % coins[i] != 0)
 	{
-		if (n >= coins[i])
-		{
-			return (count(n - coins[i], coins, nu + 1, i));
-		}
-		else if (n < coins[i] && n != 0)
-		{
-			return (count(n, coins, nu, i + 1));
-		}
-		else if (n <= 0)
-		{
-			return (nu);
-		}
+		return (count(n % coins[i], coins, nu +
+					((n - (n % coins[i])) / coins[i]), i + 1));
+	}
+	else if (n <= 0)
+	{
+		return (nu);
 	}
 	return (0);
-
-
 }
 
 /**
