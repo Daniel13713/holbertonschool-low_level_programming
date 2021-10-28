@@ -83,11 +83,11 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-	for (i = 0; i < ac; i++)
+	for (i = 3; i < ac; i++)
 	{
 		sumlen += _strlen_recursion(av[i]);
 	}
-	str = malloc((sumlen - ac) * sizeof(char));
+	str = malloc(sumlen * sizeof(char));
 	if (str == NULL)
 	{
 		free(str);
