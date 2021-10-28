@@ -58,11 +58,11 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		sumlen += _strlen(av[i]);
 	}
-	str = malloc((sumlen + ac) * sizeof(char));
+	str = malloc((sumlen + ac + 1) * sizeof(char));
 	if (str == NULL)
 	{
 		free(str);
