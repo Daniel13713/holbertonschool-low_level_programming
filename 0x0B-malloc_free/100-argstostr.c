@@ -83,17 +83,16 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-	for (i = 0; i <= ac; i++)
+	for (i = 3; i < ac; i++)
 	{
 		sumlen += _strlen_recursion(av[i]);
 	}
 	str = malloc(sumlen * sizeof(char));
 	if (str == NULL)
 	{
-		free(str);
 		return (NULL);
 	}
-	for (i = 0; i <= ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		str = str_concat(str, av[i]);
 		str = str_concat(str, "\n");
