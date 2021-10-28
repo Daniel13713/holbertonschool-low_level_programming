@@ -68,5 +68,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			i++;
 		}
 	}
+	str[i + lens1] = '\0';
 	return (str);
 }
