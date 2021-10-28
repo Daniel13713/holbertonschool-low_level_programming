@@ -1,73 +1,47 @@
 #include "main.h"
 
 /**
- * _strlen_recursion - calculate the length of a string
+ * _strlen - return the length of a string
  *
- * @s: string
- * Return: Length of the string s
+ * @s: pointer to string
+ * Return: Length of a string
  */
 
-int _strlen_recursion(char *s)
+int _strlen(char *s)
 {
-	int i = 0;
+	int i;
 
-	if (s == NULL)
-	{
-		return (0);
-	}
-
-	if (*s)
+	i = 0;
+	while (s[i] != '\0')
 	{
 		i++;
-		return (i + _strlen_recursion(s + 1));
 	}
 	return (i);
 }
 
+
 /**
- * *str_concat - concaten two string
+ * *_strncat -function that concatenates two strings.
  *
- * @s1: srting 1
- * @s2: string 2
- * Return: Pointer to string (concatenect)
+ * @dest: final result
+ * @src: string thet append to dest string
+ * @n: bytes of src
+ * Return: dest
  */
 
-char *str_concat(char *s1, char *s2)
+char *_strncat(char *dest, char *src)
 {
-	int size_1, size_2, i;
-	char *str = NULL;
+	int i;
+	int len;
 
-	size_1 = _strlen_recursion(s1);
-	size_2 = _strlen_recursion(s2);
-	str = malloc((size_1 + size_2 + 1) * sizeof(char));
-	if (str == NULL)
+	len = _strlen(dest);
+	for (i = 0; src[i] != '\0'; i++)
 	{
-		return (0);
+		dest[len + i] = src[i];
 	}
-	i = 0;
-	if (s1 != NULL)
-	{
-		while (s1[i] != '\0')
-		{
-			str[i] = s1[i];
-			i++;
-		}
-	}
-	i = 0;
-	if (s2 != NULL)
-	{
-		while (s2[i] != '\0')
-		{
-			str[i + size_1] = s2[i];
-			i++;
-		}
-	}
-	free(s1);
-	free(s2);
-	return (str);
+	dest[len + i] = '\0';
+	return (dest);
 }
-
-
 /**
  * *argstostr - concatect many strings
  *
@@ -87,7 +61,7 @@ char *argstostr(int ac, char **av)
 	}
 	for (i = 3; i < ac; i++)
 	{
-		sumlen += _strlen_recursion(av[i]);
+		sumlen += _strlen(av[i]);
 	}
 	str = malloc(sumlen * sizeof(char));
 	if (str == NULL)
@@ -96,8 +70,8 @@ char *argstostr(int ac, char **av)
 	}
 	for (i = 0; i < ac; i++)
 	{
-		str = str_concat(str, av[i]);
-		str = str_concat(str, "\n");
+		str = _strncat(str, av[i]);
+		str = _strncat(str, "\n");
 	}
 	return (str);
 }
