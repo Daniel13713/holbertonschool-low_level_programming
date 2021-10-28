@@ -62,6 +62,7 @@ char *str_concat(char *s1, char *s2)
 			i++;
 		}
 	}
+	free(str);
 	return (str);
 }
 
@@ -83,7 +84,7 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-	for (i = ac - 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		sumlen += _strlen_recursion(av[i]);
 	}
@@ -96,6 +97,7 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 	{
 		str = str_concat(str, av[i]);
+		free(str);
 		str = str_concat(str, "\n");
 	}
 	return (str);
