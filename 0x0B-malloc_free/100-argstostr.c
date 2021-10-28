@@ -83,7 +83,7 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-	for (i = 3; i < ac; i++)
+	for (i = ac - 1; i < ac; i++)
 	{
 		sumlen += _strlen_recursion(av[i]);
 	}
