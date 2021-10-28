@@ -96,7 +96,6 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 	{
 		str = str_concat(str, av[i]);
-		free(str);
 		str = str_concat(str, "\n");
 	}
 	return (str);
