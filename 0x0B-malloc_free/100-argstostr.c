@@ -21,27 +21,26 @@ int _strlen(char *s)
 
 
 /**
- * *_strncat -function that concatenates two strings.
+ * * _strcat - concatec two strings
  *
- * @dest: final result
- * @src: string thet append to dest string
- * @n: bytes of src
+ * @dest: pointer final concatenect
+ * @src: source string to concatenet
  * Return: dest
  */
 
-char *_strncat(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
-	int i;
-	int len;
+	int i, len_src, len_dest;
 
-	len = _strlen(dest);
-	for (i = 0; src[i] != '\0'; i++)
+	len_src = _strlen(src);
+	len_dest = _strlen(dest);
+	for (i = 0; i < len_src; i++)
 	{
-		dest[len + i] = src[i];
+		dest[len_dest + i] = src[i];
 	}
-	dest[len + i] = '\0';
 	return (dest);
 }
+
 /**
  * *argstostr - concatect many strings
  *
@@ -59,19 +58,20 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-	for (i = 3; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		sumlen += _strlen(av[i]);
 	}
-	str = malloc(sumlen * sizeof(char));
+	str = malloc((sumlen + ac) * sizeof(char));
 	if (str == NULL)
 	{
+		free(str);
 		return (NULL);
 	}
 	for (i = 0; i < ac; i++)
 	{
-		str = _strncat(str, av[i]);
-		str = _strncat(str, "\n");
+		str = _strcat(str, av[i]);
+		str = _strcat(str, "\n");
 	}
 	return (str);
 }
