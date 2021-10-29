@@ -11,7 +11,7 @@ int main(void)
 {
     char *concat;
 
-    concat = string_nconcat("Daniel ", "Duarte", -2);
+    concat = string_nconcat("da", NULL, 0);
     printf("%s\n", concat);
     free(concat);
     return (0);
