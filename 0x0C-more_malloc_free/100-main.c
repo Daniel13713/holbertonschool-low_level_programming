@@ -41,9 +41,12 @@ int main(void)
     char *p;
     int i;
 
-    p = malloc(sizeof(char) * 10);
-    p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
+    /*p = malloc(sizeof(char) * 10);
+    p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);*/
+    p = malloc(sizeof(char) * 30); 
+    p = _realloc(p, sizeof(char) * 30, sizeof(char) * 0);
     i = 0;
+    printf("HERE");
     while (i < 98)
     {
         p[i++] = 98;

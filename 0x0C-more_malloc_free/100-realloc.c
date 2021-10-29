@@ -39,15 +39,20 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *new_ptr;
+	void *new_ptr = NULL;
 
-	if (ptr == NULL)
+	if (!ptr)
 	{
 		new_ptr = malloc(new_size);
 		if (!new_ptr)
 		{
 			goto error;
 		}
+	}
+	else if (new_size == 0 && ptr != NULL)
+	{
+		free(ptr);
+		goto error;
 	}
 	else
 	{
