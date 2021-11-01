@@ -1,5 +1,9 @@
 #ifndef HEADER_FILE
 #define HEADER_FILE
+#include <stdlib.h>
+#include <stdlib.h>
+
+
 
 /**
  * struct dog - atributtes for a dog
@@ -21,4 +25,6 @@ void print_dog(struct dog *d);
 
 /*Define a nuew type*/
 typedef struct dog dog_t;
+
+dog_t *new_dog(char *name, float age, char *owner);
 #endif
