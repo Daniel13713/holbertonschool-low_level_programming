@@ -14,11 +14,6 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	unsigned int i;
 	char *arg;
 
-	if (n == 0)
-	{
-		goto error;
-	}
-
 	va_start(ap, n);
 	for (i = 0; i < n; i++)
 	{
@@ -42,7 +37,4 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	}
 	printf("\n");
 	va_end(ap);
-error:
-	return;
-
 }
