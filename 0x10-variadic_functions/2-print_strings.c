@@ -14,7 +14,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	unsigned int i;
 	char *arg;
 
-	if (!separator || n == 0)
+	if (n == 0)
 	{
 		goto error;
 	}
@@ -34,7 +34,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		{
 			printf("(nil)");
 		}
-		if (i < n - 1)
+		if (i < n - 1 && separator)
 		{
 			printf("%s", separator);
 		}
