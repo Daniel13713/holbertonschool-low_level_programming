@@ -17,13 +17,9 @@ int int_index(int *array, int size, int (*cmp)(int))
 {
 	int i = 0;
 
-	if (!array || !cmp)
+	if (!array || !cmp || (size < 0))
 	{
 		goto error;
-	}
-	else if (size <= 0)
-	{
-		return (-1);
 	}
 	for (i = 0; i < size; i++)
 	{
@@ -32,7 +28,7 @@ int int_index(int *array, int size, int (*cmp)(int))
 			return (i);
 		}
 	}
-	return (-1);
+	goto error;
 error:
 	return (-1);
 }
