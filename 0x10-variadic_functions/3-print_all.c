@@ -1,5 +1,60 @@
 #include "variadic_functions.h"
 
+
+/**
+ * func_char - print char
+ *
+ * @ap: arguments passed
+ * Return: Nothing
+ */
+
+void func_char(va_list ap)
+{
+	printf("%c", va_arg(ap, int));
+}
+
+
+/**
+ * func_int - print int
+ *
+ * @ap: arguments passed
+ * Return: Nothing
+ */
+
+void func_int(va_list ap)
+{
+	printf("%d", va_arg(ap, int));
+}
+/**
+ * func_float - print float
+ *
+ * @ap: arguments passed
+ * Return: Nothing
+ */
+
+void func_float(va_list ap)
+{
+	printf("%f", va_arg(ap, double));
+}
+/**
+ * func_str - print char *
+ *
+ * @ap: arguments passed
+ * Return: Nothing
+ */
+
+void func_str(va_list ap)
+{
+	char *str = va_arg(ap, char *);
+
+	if (!str)
+	{
+		str = "(nil)";
+		return;
+	}
+	printf("%s", str);
+}
+
 /**
  * print_all - print anything
  *
@@ -10,43 +65,34 @@
 
 void print_all(const char * const format, ...)
 {
-	int i = 0;
-	char *string = NULL;
-	char *s = "";
-
 	va_list ap;
+	int i = 0, j = 0;
+	char *separator = "";
+	arg_t types[] = {
+		{"c", func_char},
+		{"i", func_int},
+		{"f", func_float},
+		{"s", func_str},
+		{NULL, NULL}
+	};
 
 	va_start(ap, format);
-	if (format)
+	while (format && format[i])
 	{
-		while (format[i])
+		j = 0;
+		while (types[j].fort)
 		{
-			switch (format[i])
+			if (format[i] == *(types[j].fort))
 			{
-				case 'c':
-					printf("%s%c", s, va_arg(ap, int));
-					break;
-				case 'i':
-					printf("%s%d", s, va_arg(ap, int));
-					break;
-				case 'f':
-					printf("%s%f", s, va_arg(ap, double));
-					break;
-				case 's':
-					string = va_arg(ap, char *);
-					if (!string)
-					{
-						string = "(nil)";
-					}
-					printf("%s%s", s, string);
-					break;
-				default:
-					i++;
-					continue;
+				printf("%s", separator);
+				types[j].f(ap);
+				separator = ", ";
+				break;
 			}
-			s = ", ";
-			i++;
+			j++;
 		}
+		i++;
+
 	}
 	printf("\n");
 	va_end(ap);
