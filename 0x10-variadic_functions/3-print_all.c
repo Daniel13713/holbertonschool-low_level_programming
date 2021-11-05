@@ -47,10 +47,9 @@ void func_str(va_list ap)
 {
 	char *str = va_arg(ap, char *);
 
-	if (!str)
+	if (str == NULL)
 	{
 		str = "(nil)";
-		return;
 	}
 	printf("%s", str);
 }
