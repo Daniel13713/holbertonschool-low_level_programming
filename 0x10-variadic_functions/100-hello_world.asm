@@ -4,7 +4,7 @@ section .data
 
 section .text
 
-global _main
+global _start
 _main:
     mov rax, 1
     mov rdi, 1
