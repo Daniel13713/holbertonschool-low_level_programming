@@ -1,6 +1,17 @@
 #include "lists.h"
 
 /**
+ * counter - count how many time in execute
+ * @i: number of executions
+ * Return: Total number of executions
+ */
+int counter(int i)
+{
+	i++;
+	return (i);
+}
+
+/**
  * print_list - print all content of list_t
  *
  * @h: pointer to the first struct
@@ -22,7 +33,7 @@ size_t print_list(const list_t *h)
 	if (h->next)
 	{
 		print_list(h->next);
-		i++;
+		i = counter(1);
 	}
-	return (i + 1);
+	return (i);
 }
