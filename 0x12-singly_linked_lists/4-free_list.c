@@ -9,17 +9,14 @@
 
 void free_list(list_t *head)
 {
-	list_t *next_free = NULL;
+	list_t *current = head;
+	list_t *next_free;
 
-	if (!head)
+	while (current)
 	{
-		return;
-	}
-	while (head)
-	{
-		next_free = head;
-		head = head->next;
-		free(next_free);
-		free(next_free->str);
+		next_free = current->next;
+		free(current->str);
+		free(current);
+		current = next_free;
 	}
 }
