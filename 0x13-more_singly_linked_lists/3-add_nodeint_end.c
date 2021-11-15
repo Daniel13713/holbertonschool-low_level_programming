@@ -1,27 +1,5 @@
 #include "lists.h"
 
-/**
- * _strlen - return the length of a string
- *
- * @s: pointer to string
- * Return: Length of a string
- */
-
-unsigned int _strlen(char *s)
-{
-	unsigned int i;
-
-	if (s == NULL)
-	{
-		return (0);
-	}
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
 
 /**
  * add_nodeint_end - add a new node to the end
