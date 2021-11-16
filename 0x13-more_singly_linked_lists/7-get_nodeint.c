@@ -1,15 +1,15 @@
 #include "lists.h"
 
 /**
- * listint_len - print lenthg of listint_t
+ * listint_len2 - print lenthg of listint_t
  *
  * @h: pointer to the first struct
  * Return: length of list_t
  */
 
-size_t listint_len(const listint_t *h)
+unsigned int listint_len2(const listint_t *h)
 {
-	size_t i = 0;
+	unsigned int i = 0;
 
 	while (h)
 	{
@@ -30,8 +30,9 @@ size_t listint_len(const listint_t *h)
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
 	unsigned int i = 0;
+	unsigned int len = listint_len2(head);
 
-	if (!head)
+	if (!head || index >= len)
 	{
 		return (NULL);
 	}
@@ -39,6 +40,5 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 	{
 		head = head->next;
 	}
-
 	return (head);
 }
