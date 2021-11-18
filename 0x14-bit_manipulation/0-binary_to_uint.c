@@ -93,9 +93,11 @@ unsigned int binary_to_uint(const char *b)
 		}
 		if (copy[i] != '0' && copy[i] != '0' + 1)
 		{
+			free(copy);
 			return (0);
 		}
 		i++;
 	}
+	free(copy);
 	return (dec_num);
 }
