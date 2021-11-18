@@ -96,6 +96,11 @@ unsigned int binary_to_uint(const char *b)
 			free(copy);
 			return (0);
 		}
+		if (i > 32)
+		{
+			free(copy);
+			return (0);
+		}
 		i++;
 	}
 	free(copy);
