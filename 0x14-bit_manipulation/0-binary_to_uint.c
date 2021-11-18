@@ -20,38 +20,6 @@ int _strlen_recursion(const char *s)
 }
 
 /**
- * _strdup - duplicate a string with malloc
- *
- * @str: string to duplicate
- * Return: Pointer to string
- */
-
-char *_strdup(const char *str)
-{
-	char *copy;
-	int size_str, i = 0;
-
-	if (str == NULL)
-	{
-		return (0);
-	}
-
-	size_str = _strlen_recursion(str);
-	copy = malloc(size_str + 1 * sizeof(char));
-	if (copy == NULL)
-	{
-		return (0);
-	}
-
-	while (str[i] != '\0')
-	{
-		copy[i] = str[i];
-		i++;
-	}
-	return (copy);
-}
-
-/**
  * rev_string - Function that reverse a string
  *
  * @s: string
@@ -115,7 +83,7 @@ unsigned int binary_to_uint(const char *b)
 	{
 		return (0);
 	}
-	copy = _strdup(b);
+	copy = strdup(b);
 	rev_string(copy);
 	while (copy[i] != '\0')
 	{
