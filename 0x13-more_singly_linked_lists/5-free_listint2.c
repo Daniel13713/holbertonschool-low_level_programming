@@ -17,6 +17,7 @@ void free_listint2(listint_t **head)
 		return;
 	}
 	current = *head;
+	printf("%d\n", head->n);
 	while (current)
 	{
 		next_free = current;
