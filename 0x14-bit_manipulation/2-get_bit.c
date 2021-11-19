@@ -1,31 +1,16 @@
 #include "main.h"
 
 /**
+ * get_bit - calculte the value a bit a given index
  *
- *
+ * @n: decimal number
+ * @index: position
+ * Return: Value of a bit in index
  */
 
 
-unsigned int binary_to_uint(const char *b)
+int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int dec_num = 0;
-	unsigned int i = 0;
-
-	if (!b)
-	{
-		return (0);
-	}
-	while (b[i] == '\0')
-	{
-		if (b[i] == '1')
-		{
-			dec_num += 2**i;	
-		}
-		if (b[i] != '0' || b[i] != '1')
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (dec_num);
+	n >>= index;
+	return (n & 1);
 }
