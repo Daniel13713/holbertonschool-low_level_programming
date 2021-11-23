@@ -30,6 +30,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	n = open(filename, O_RDONLY);
 	if (n == -1)
 	{
+		free(buff);
 		goto error;
 	}
 	n_read = read(n, buff, letters);
@@ -41,7 +42,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	buff[n_read] = '\0';
 	while (buff[i])
 	{
-		putchar(buff[i]);
+		write(STDOUT_FILENO, &buff[i], 1);
 		i++;
 	}
 	close(n);
