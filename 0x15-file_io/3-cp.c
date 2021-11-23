@@ -34,10 +34,11 @@ void copy_textfile(const char *filename_one, const char *filename_two)
 	ssize_t fd_read = 0, fd_write = 0, fd_close = 0, fd_close_2;
 	char buff[1024];
 
-	fd = open(filename_one, O_RDONLY);
+	fd = open(filename_one, O_RDONLY, 0777);
 	if (fd == -1)
 		goto error98;
-	n_mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	n_mode = (S_IRUSR | S_IWUSR) |  (S_IRGRP | S_IWGRP) | S_IROTH;
+	n_mode = 0664;
 	fd_2 = open(filename_two, O_WRONLY | O_CREAT | O_TRUNC, n_mode);
 	if (fd_2 == -1)
 		goto error99;
