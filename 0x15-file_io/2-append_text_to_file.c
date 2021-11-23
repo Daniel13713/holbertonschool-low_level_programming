@@ -18,12 +18,12 @@ int _strlen_recursion(char *s)
 	return (i);
 }
 /**
- * append_text_to_file - Writfunction that creates a file 
- * 
+ * append_text_to_file - Writfunction that creates a file
+ *
  * @filename: new textFile
  * @text_content: text to add the end og textFile
  *
- * Return: (1) for succes, (-1) if fail 
+ * Return: (1) for succes, (-1) if fail
  */
 
 int append_text_to_file(const char *filename, char *text_content)
