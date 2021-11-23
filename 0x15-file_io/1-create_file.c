@@ -35,13 +35,23 @@ int create_file(const char *filename, char *text_content)
 	{
 		goto error;
 	}
+	if (text_content == NULL)
+	{
+		n = open(filename, O_CREAT, S_IRUSR | S_IWUSR);
+		if (n == -1)
+		{
+			goto error;
+		}
+		close(n);
+		return (1);
+	}
 	n = open(filename,  O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (n == -1)
 	{
 		goto error;
 	}
 	size = _strlen_recursion(text_content);
-	n_write = write(n, text_content, size + 1);
+	n_write = write(n, text_content, size);
 	if (n_write == -1)
 	{
 		goto error;
