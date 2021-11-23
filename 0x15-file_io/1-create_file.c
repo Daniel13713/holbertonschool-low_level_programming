@@ -41,7 +41,7 @@ int create_file(const char *filename, char *text_content)
 		goto error;
 	}
 	size = _strlen_recursion(text_content);
-	n_write = write(n, text_content, size);
+	n_write = write(n, text_content, size + 1);
 	if (n_write == -1)
 	{
 		goto error;
