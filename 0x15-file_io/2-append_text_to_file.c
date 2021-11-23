@@ -37,6 +37,17 @@ int append_text_to_file(const char *filename, char *text_content)
 	}
 	n_flags = O_WRONLY | O_APPEND;
 	n_permission = S_IRUSR | S_IWUSR;
+	if (text_content == NULL)
+	{
+		n_flags = O_WRONLY;
+		n = open(filename, n_flags, n_permission);
+		if (n == -1)
+		{
+			goto error;
+		}
+		close(n);
+		return (1);
+	}
 	n = open(filename, n_flags, n_permission);
 	if (n == -1)
 	{
