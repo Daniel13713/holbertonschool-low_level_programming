@@ -1,4 +1,24 @@
 #include "lists.h"
+
+/**
+ * dlistint_len_2 - calculate a size of a double linked list
+ *
+ * @h: double linked list
+ * Return: size of h
+ */
+
+unsigned int dlistint_len_2(const dlistint_t *h)
+{
+	unsigned int size = 0;
+
+	while (h)
+	{
+		h = h->next;
+		size++;
+	}
+	return (size);
+}
+
 /**
  * error_if - aux function
  *
@@ -26,11 +46,12 @@ int error_if(dlistint_t *p)
 
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int i = 0;
+	unsigned int i = 0, size = 0;
 	dlistint_t *new = NULL, *current = NULL, *next_node = NULL;
 
 	if (h)
 	{
+		size = dlistint_len_2(*h);
 		new = malloc(sizeof(dlistint_t));
 		if (!error_if(new))
 			return (NULL);
@@ -39,12 +60,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		new->prev = NULL;
 		if (idx == 0)
 		{
-			new->next = *h;
-			if (new->next)
-				(*h)->prev = new;
-			*h = new;
-			return (new);
+			add_dnodeint(h, n);
 		}
+		else if (size == idx)
+			add_dnodeint_end(h, n);
 		current = *h;
 		for (i = 0; i < idx - 1; i++)
 		{
