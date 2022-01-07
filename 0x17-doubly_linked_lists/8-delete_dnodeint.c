@@ -58,7 +58,7 @@ void deleteEnd(dlistint_t **head)
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	unsigned int i = 0;
-	dlistint_t *current = NULL, *toDelete = NULL;
+	dlistint_t *toDelete = NULL;
 
 	if (head && *head)
 	{
@@ -67,23 +67,22 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			deleteBeginning(head);
 			return (1);
 		}
-		current = *head;
-		for (i = 0; current != NULL; i++)
+		for (i = 0; *head != NULL; i++)
 		{
 			if (i == index)
 			{
-				if (current->next == NULL)
+				if ((*head)->next == NULL)
 				{
 					deleteEnd(head);
 					return (1);
 				}
 				else
 				{
-					if (current != NULL)
+					if (*head != NULL)
 					{
-						toDelete = current;
-						current->prev->next = current->next;
-						current->next->prev = current->prev;
+						toDelete = *head;
+						(*head)->prev->next = (*head)->next;
+						(*head)->next->prev = (*head)->prev;
 
 						free(toDelete);
 						toDelete = NULL;
@@ -91,7 +90,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 					}
 				}
 			}
-			current = current->next;
+			(*head) = (*head)->next;
 		}
 	}
 	return (-1);
