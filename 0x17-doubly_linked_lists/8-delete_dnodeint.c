@@ -30,20 +30,19 @@ void deleteBeginning(dlistint_t **head)
  */
 void deleteEnd(dlistint_t **head)
 {
-	dlistint_t *toDelete = NULL, *h = NULL;
+	dlistint_t *toDelete = NULL;
 
 	if (head && *head)
 	{
-		h = *head;
-		while (h)
+		while (*head)
 		{
-			h = h->next;
-			if (h != NULL)
+			*head = (*head)->next;
+			if (*head != NULL)
 			{
-				h->prev = NULL;
+				(*head)->prev = NULL;
 			}
 		}
-		toDelete = h;
+		toDelete = *head;
 		free(toDelete);
 		toDelete = NULL;
 	}
