@@ -27,37 +27,40 @@ int error_if(dlistint_t *p)
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	unsigned int i = 0;
-	dlistint_t *new = NULL, *current = NULL, *next_node = NULL;
+	dlistint_t *new = NULL, *current = NULL;
 
 	if (h)
 	{
-		new = malloc(sizeof(dlistint_t));
-		if (!error_if(new))
-			return (NULL);
-		new->n = n;
-		new->next = NULL;
-		new->prev = NULL;
+		current = *h;
+		while (i < idx - 1 && current != NULL)
+		{
+			current = current->next;
+			i++;
+		}
 		if (idx == 0)
 		{
 			return (add_dnodeint(h, n));
 		}
-		current = *h;
-		for (i = 0; i < idx - 1; i++)
+		else if (current->next == NULL)
 		{
-			current = current->next;
-			if (!current)
-			{
-				free(new);
-				return (NULL);
-			}
+			return (add_dnodeint_end(h, n));
 		}
-		next_node = current->next;
-		new->next = current->next;
-		new->prev = current;
-		current->next = new;
-		next_node->prev = new;
-		new = new->next;
-		return (new);
+		else if (current != NULL)
+		{
+			new = malloc(sizeof(dlistint_t));
+			if (!error_if(new))
+				return (NULL);
+			new->n = n;
+			new->next = current->next;
+			new->prev = current;
+
+			if (current->next != NULL)
+			{
+				current->next->prev = new;
+			}
+			current->next = new;
+			return (new);
+		}
 	}
 	return (NULL);
 }
