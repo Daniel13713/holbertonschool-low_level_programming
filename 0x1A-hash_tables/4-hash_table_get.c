@@ -16,13 +16,20 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	/*Obtain the index*/
 	index = key_index((unsigned char *)key, ht->size);
-
 	/*obtain the value form array*/
 	arg_array = ht->array[index];
 	if (arg_array == NULL)
 	{
 		return (NULL);
 	}
-	value = arg_array->value;
-	return (value);
+	while (arg_array != NULL)
+	{
+		if (strcmp(arg_array->key, key) == 0)
+		{
+			value = arg_array->value;
+			return (value);
+		}
+		arg_array = arg_array->next;
+	}
+	return (NULL);
 }
