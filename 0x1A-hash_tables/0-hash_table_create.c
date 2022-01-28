@@ -29,7 +29,8 @@ hash_table_t *hash_table_create(unsigned long int size)
 		return (NULL);
 	}
 
-	/*Null to each argument of array for (i = 0; i < size; i++)*/
+	/* Null to each argument of array */
+	for (i = 0; i < size; i++)
 	{
 		hashtable->array[i] = NULL;
 	}
