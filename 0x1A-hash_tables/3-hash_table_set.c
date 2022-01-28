@@ -98,7 +98,7 @@ hash_node_t *add_key_value(const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0;
-	hash_node_t *arg_array = NULL, *prev_arg = NULL;
+	hash_node_t *arg_array = NULL;
 
 	if (key == NULL)
 		return (0);
@@ -113,23 +113,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (1);
 	}
 	/*Search with the key in the hash tabe*/
-	while (arg_array != NULL)
+	if (strcmp(arg_array->key, key) == 0)
 	{
-		if (strcmp(arg_array->key, key) == 0)
+		/*add the value*/
+		free(arg_array->value);
+		arg_array->value = malloc(strlen(value) + 1);
+		if (arg_array->value == NULL)
 		{
-			/*add the value*/
 			free(arg_array->value);
-			arg_array->value = malloc(strlen(value) + 1);
-			if (arg_array->value == NULL)
-			{
-				free(arg_array->value);
-				return (0);
-			}
-			strcpy(arg_array->value, value);
-			return (1);
+			return (0);
 		}
-		prev_arg = arg_array;
-		arg_array = prev_arg->next;
+		strcpy(arg_array->value, value);
+		return (1);
 	}
 	/*There are a collision, so add to begining*/
 	add_nodeint(&arg_array, key, value);
