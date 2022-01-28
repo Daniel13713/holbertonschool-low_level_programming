@@ -68,7 +68,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int index = 0;
 	hash_node_t *arg_array = NULL, *list = NULL;
 
-	if (key == NULL || !*key || value == NULL)
+	if (key == NULL || key[0] == '\0' || value == NULL)
 		return (0);
 	/* Obtain index from key_index*/
 	index = key_index((unsigned char *)key, ht->size);
@@ -98,7 +98,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/*There are a collision, so add to begining*/
 	list = ht->array[index];
 	ht->array[index] = add_nodeint(&list, key, value);
-	list = list->next;
 	if (list == NULL)
 		return (0);
 	return (1);
