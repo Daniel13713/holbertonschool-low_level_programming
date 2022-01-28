@@ -18,25 +18,9 @@ hash_node_t *add_nodeint(hash_node_t **h, const char *key, const char *value)
 	{
 		return (NULL);
 	}
-	/*Allocate key and value*/
-	node->key = malloc(strlen(key) + 1);
-	if (!key)
-	{
-		free(node->key);
-		free(node);
-		return (NULL);
-	}
-	node->value = malloc(strlen(value) + 1);
-	if (!value)
-	{
-		free(node->value);
-		free(node->key);
-		free(node);
-		return (NULL);
-	}
 	node->next = *h;
-	strcpy(node->key, key);
-	strcpy(node->value, value);
+	node->key = strdup(key);
+	node->value = strdup(value);
 	*h = node;
 	return (node);
 }
@@ -59,26 +43,10 @@ hash_node_t *add_key_value(const char *key, const char *value)
 		free(node);
 		return (NULL);
 	}
-	/*Allocate key and value*/
-	node->key = malloc(strlen(key) + 1);
-	if (!key)
-	{
-		free(node->key);
-		free(node);
-		return (NULL);
-	}
-	node->value = malloc(strlen(value) + 1);
-	if (!value)
-	{
-		free(node->value);
-		free(node->key);
-		free(node);
-		return (NULL);
-	}
 
 	/*Copy value and key in node*/
-	strcpy(node->key, key);
-	strcpy(node->value, value);
+	node->key = strdup(key);
+	node->value = strdup(value);
 
 	/*next node start in null*/
 	node->next = NULL;
@@ -98,9 +66,9 @@ hash_node_t *add_key_value(const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0;
-	hash_node_t *arg_array = NULL;
+	hash_node_t *arg_array = NULL, *list = NULL;
 
-	if (key == NULL)
+	if (key == NULL || !*key || value == NULL)
 		return (0);
 	/* Obtain index from key_index*/
 	index = key_index((unsigned char *)key, ht->size);
@@ -113,22 +81,25 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (1);
 	}
 	/*Search with the key in the hash tabe*/
-	if (strcmp(arg_array->key, key) == 0)
+	while (arg_array)
 	{
-		/*add the value*/
-		free(arg_array->value);
-		arg_array->value = malloc(strlen(value) + 1);
-		if (arg_array->value == NULL)
+		if (strcmp(arg_array->key, key) == 0)
 		{
-			free(arg_array->value);
-			return (0);
+			/*add the value*/
+			if (value == NULL)
+			{
+				return (0);
+			}
+			arg_array->value = strdup(value);
+			return (1);
 		}
-		strcpy(arg_array->value, value);
-		return (1);
+		arg_array = arg_array->next;
 	}
 	/*There are a collision, so add to begining*/
-	add_nodeint(&arg_array, key, value);
-	if (arg_array == NULL)
+	list = ht->array[index];
+	ht->array[index] = add_nodeint(&list, key, value);
+	list = list->next;
+	if (list == NULL)
 		return (0);
 	return (1);
 }
