@@ -100,6 +100,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int index = 0;
 	hash_node_t *arg_array = NULL, *prev_arg = NULL;
 
+	if (key == NULL)
+		return (0);
 	/* Obtain index from key_index*/
 	index = key_index((unsigned char *)key, ht->size);
 	/*try to look*/
