@@ -14,6 +14,8 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	hash_node_t *arg_array = NULL;
 	char *value = NULL;
 
+	if (!key || key[0] == '\0' || !ht || !ht->size || !ht->array)
+		return (NULL);
 	/*Obtain the index*/
 	index = key_index((unsigned char *)key, ht->size);
 	/*obtain the value form array*/
