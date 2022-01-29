@@ -10,13 +10,14 @@
 void hash_table_print(const hash_table_t *ht)
 {
 	hash_node_t *arg_array = NULL;
-	unsigned long int i = 0, j = 0;
+	unsigned long int i = 0;
+	char *keys[1024];
+	int j = 0;
 
 	if (!ht)
 	{
 		return;
 	}
-	printf("{");
 	for (i = 0; i < ht->size; i++)
 	{
 		arg_array = ht->array[i];
@@ -24,15 +25,22 @@ void hash_table_print(const hash_table_t *ht)
 		{
 			while (arg_array)
 			{
-				if (j != 0)
-				{
-					printf(", ");
-				}
-				printf("'%s': '%s'", arg_array->key, arg_array->value);
+				keys[j] = arg_array->key;
 				arg_array = arg_array->next;
-				j = 1;
+				j++;
 			}
 		}
+	}
+	j = 0;
+	printf("{");
+	while (keys[j])
+	{
+		printf("'%s':'%s'", keys[j], hash_table_get(ht, keys[j]));
+		if (j != 1024 && keys[j + 1])
+		{
+			printf(", ");
+		}
+		j++;
 	}
 	printf("}\n");
 }
