@@ -36,7 +36,7 @@ void hash_table_print(const hash_table_t *ht)
 	printf("{");
 	while (keys[j])
 	{
-		printf("'%s':'%s'", keys[j], hash_table_get(ht, keys[j]));
+		printf("'%s': '%s'", keys[j], hash_table_get(ht, keys[j]));
 		if (j != 1024 && keys[j + 1])
 		{
 			printf(", ");
