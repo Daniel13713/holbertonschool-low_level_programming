@@ -18,6 +18,3 @@ school.o: school.c m.h
 main.o: main.c m.h
 	$(CC) -c -o main.o main.c
 
-clean:
-	rm -f $(NAME) $(OBJ)
-
