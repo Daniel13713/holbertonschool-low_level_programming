@@ -9,9 +9,7 @@ SRC = main.c school.c
 OBJ = main.o school.o
 NAME = school
 
-all: program
-
-program: $(OBJ)
+all: $(OBJ)
 	$(CC) -o $(NAME) $(OBJ)
 
 school.o: school.c m.h
