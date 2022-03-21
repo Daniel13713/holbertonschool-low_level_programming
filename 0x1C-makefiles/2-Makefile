@@ -5,8 +5,8 @@
 #You are not allowed to have a list of all the .o files
 
 CC = gcc
-SRC := $(wildcard *.c)
-OBJ := main.o school.o
+SRC = $(wildcard *.c)
+OBJ = main.o school.o
 NAME = school
 
 all: program
