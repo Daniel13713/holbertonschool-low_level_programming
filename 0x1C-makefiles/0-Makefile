@@ -1,0 +1,7 @@
+#Compile two files, main.c and school.c
+
+all: school
+
+school:
+	gcc main.c school.c -o school
+
