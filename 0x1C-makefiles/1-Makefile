@@ -1,0 +1,10 @@
+#Executable: school
+#rules: all
+#varibles: CC(Compiler), SRC(.c files)
+
+CC := gcc
+SRC := $(wildcard *.c)
+
+all:
+	$(CC) $(SRC) -o school
+	
