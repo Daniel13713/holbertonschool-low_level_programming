@@ -9,8 +9,6 @@ def island_perimeter(grid):
     land = 0
     rows = len(grid)
     columns = len(grid[0])
-    if rows < 3 or columns < 3:
-        return 0
     for i in range(rows):
         j = 0
         for j in range(columns):
