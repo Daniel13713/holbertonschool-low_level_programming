@@ -9,9 +9,11 @@ def island_perimeter(grid):
     land = 0
     rows = len(grid)
     columns = len(grid[0])
+    print("row: {} - column: {}".format(rows, columns))
     if rows < 3 or columns < 3:
         return 0
     for i in range(rows):
+        j = 0
         for j in range(columns):
             if grid[i][j] == 0:
                 if j != columns-1 and grid[i][j+1] == 1:
@@ -26,7 +28,4 @@ def island_perimeter(grid):
                 if i != rows-1 and grid[i+1][j] == 1:
                     """down"""
                     land += 1
-            else:
-                continue
-
     return land
